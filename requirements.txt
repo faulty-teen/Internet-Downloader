@@ -1,0 +1,3 @@
+scdl==2.12.3
+spotdl==4.2.11
+pytubefix==8.12.1

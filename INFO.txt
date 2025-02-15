@@ -1,0 +1,9 @@
+Spotify is slower than other services, I do not know of a fix for this, apologies.
+Some services will print out a bunch of downloading statuses. These can be safely ignored.
+Each song will be downloaded twice if using the default folder, One in their respective folders and one in the "All" folder. This can be toggled.
+
+WIP FOLDER:
+Holds work in progress files.
+[Stopped] - Stopped working on it, likely given up due to it not being possible / too complex
+[Paused] - Waiting for updates / Help
+[Working] - Currently working on the file.
