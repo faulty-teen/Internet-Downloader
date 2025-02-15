@@ -1,6 +1,6 @@
 # 📁INTERNET DOWNLOADER📁
 
-![Internet Downloader Banner](imgs/banner.png)
+![Internet Downloader Banner](imgs/Banner.png)
 
 # 💿CURRENT SERVICES💿
 
