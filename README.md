@@ -40,3 +40,6 @@ pip install -r requirements.txt
 - 💬 Prepare your links to download
 - ⭐ Run the `main.py` script
 - ✍️ Follow the instructions to download individual links
+
+# 🆘KNOWN ISSUES🆘
+- 📃 Custom downloads folder for the `mainlist.py` script is broken
