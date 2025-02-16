@@ -1,10 +1,12 @@
 from utils import sc, spf, yt
+import os
 
 bases = ["https://soundcloud.com/", "https://www.youtube.com/", "https://open.spotify.com/", "https://spotify.com"]
 spotdir = "./Downloads/Spotify"
 scdir = "./Downloads/SoundCloud"
 ytdir = "./Downloads/Youtube"
 alldir = "./Downloads/All"
+path = ""
 
 UseAllFolder = False
 usedefaultpath = True
@@ -30,22 +32,38 @@ def site(url):
                 print(f"Not a valid link, Skipping...")
     return YouTube, SoundCloud, Spotify
 
-def download(url, useall=bool):
+def download(url, useall=bool, path=None):
     YouTube, SoundCloud, Spotify = site(url)
     if useall == True:
-        if YouTube:
-            yt.Download(url, ytdir, alldir)
-        if SoundCloud:
-            sc.Download(url, scdir, alldir)
-        if Spotify:
-            spf.Download(url, spotdir, alldir)
+        if path:
+            if YouTube:
+                yt.Download(url, path)
+            if SoundCloud:
+                sc.Download(url, path)
+            if Spotify:
+                spf.Download(url, path)
+        else:
+            if YouTube:
+                yt.Download(url, ytdir, alldir)
+            if SoundCloud:
+                sc.Download(url, scdir, alldir)
+            if Spotify:
+                spf.Download(url, spotdir, alldir)
     else:
-        if YouTube:
-            yt.Download(url, ytdir)
-        if SoundCloud:
-            sc.Download(url, scdir)
-        if Spotify:
-            spf.Download(url, spotdir) 
+        if path:
+            if YouTube:
+                yt.Download(url, path)
+            if SoundCloud:
+                sc.Download(url, path)
+            if Spotify:
+                spf.Download(url, path)
+        else:
+            if YouTube:
+                yt.Download(url, ytdir)
+            if SoundCloud:
+                sc.Download(url, scdir)
+            if Spotify:
+                spf.Download(url, spotdir)
 
 print("""
             ---INTERNET DOWNLOADER---
@@ -97,4 +115,31 @@ def processfile(file, download, UseAllFolder):
         download(url, UseAllFolder)
         i += 1
 
-processfile(listfile, download, UseAllFolder)
+def processfilecustom(file, download, path):
+    print(f"\nReading list.txt file...\n")
+    with open(file, 'r') as lfile:
+        lines = lfile.readlines()
+    print(f"\nRead file sucessfully.\n")
+    i = 1
+    ia = len(lines)
+    for url in lines:
+        url = url.strip()
+        print(f"\n\nDownloading URL [{i} / {ia}]\n\n")
+        download(url, UseAllFolder, path)
+        i += 1
+
+if usedefaultpath == True:
+    processfile(listfile, download, UseAllFolder)
+else:
+    paths =  input(f"Enter the path to download files to: ")
+    os.makedirs(paths, exist_ok=True)
+    processfilecustom(listfile, download, paths)
+
+
+cho = input(f"Open Downloaded Path? [Y/N] ")
+if cho.lower() == "y":
+    if usedefaultpath == False:
+        pat = paths.replace('/', '\\')
+        os.system(f"start {pat}")
+    else:
+        os.system(f"start Downloads")
