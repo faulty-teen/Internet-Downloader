@@ -42,4 +42,5 @@ pip install -r requirements.txt
 - ✍️ Follow the instructions to download individual links
 
 # 🆘KNOWN ISSUES🆘
-- 📃 Custom downloads folders are broken, only downloads to the same directory as `main.py`
+> [!IMPORTANT]
+> - 📃 Custom downloads folders are broken, only downloads to the same directory as `main.py`
